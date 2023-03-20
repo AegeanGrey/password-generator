@@ -28,9 +28,44 @@ var criteria = {
     var numsIn = confirm("Would you like numbers?");
     console.log(numsIn);
 
-    
-  }
+  // Takes the values from the user-input variables from the process method
+  // Checks each of the value to see if they are true or false
+    if (lowerCaseIn && upperCaseIn && specialCharIn && numsIn) {
 
+    } else if (lowerCaseIn && upperCaseIn && specialCharIn && !numsIn) {
+
+    } else if (lowerCaseIn && upperCaseIn && !specialCharIn && numsIn) {
+
+    } else if (lowerCaseIn && !upperCaseIn && specialCharIn && numsIn) {
+
+    } else if (!lowerCaseIn && upperCaseIn && specialCharIn && numsIn) {
+
+    } else if (!lowerCaseIn && !upperCaseIn && specialCharIn && numsIn) {
+
+    } else if (lowerCaseIn && upperCaseIn && !specialCharIn && !numsIn) {
+
+    } else if (lowerCaseIn && !upperCaseIn && specialCharIn && !numsIn) {
+
+    } else if (!lowerCaseIn && upperCaseIn && !specialCharIn && numsIn) {
+
+    } else if (lowerCaseIn && !upperCaseIn && !specialCharIn && numsIn) {
+
+    } else if (!lowerCaseIn && upperCaseIn && specialCharIn && !numsIn) {
+    
+    } else if (!lowerCaseIn && !upperCaseIn && !specialCharIn && numsIn) {
+    
+    } else if (!lowerCaseIn && !upperCaseIn && specialCharIn && !numsIn) {
+    
+    } else if (!lowerCaseIn && upperCaseIn && !specialCharIn && !numsIn) {
+    
+    } else if (lowerCaseIn && !upperCaseIn && !specialCharIn && !numsIn) {
+
+  // If none of that options are accepted, it will relay an alert prompt stating so
+    } else {
+    alert("Unable to create a password as none of the criteria was accepted");
+    return;
+    }   
+  }
 }
 
 function generatePassword() {
@@ -52,7 +87,6 @@ function generatePassword() {
     alert("Please input a number between 8 and 20");
     return;
   }
-
 
   // Ensure that at least one of the pop-ups is selected to generate a password
   // Prevent user from selecting no on all answers
