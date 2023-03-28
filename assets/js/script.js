@@ -8,11 +8,14 @@ var criteria = {
   minChar: 8,
   maxChar: 20,
 
-  // Will need to find a way to randomize these data items when pulling from one or each array
+  // Created arrays that contains data for their respective lists
   lowerCase: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l","m", "n", "o", "p", "q", "r","s", "t", "u", "v", "w", "x", "y", "z"],
   upperCase: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L","M", "N", "O", "P", "Q", "R","S", "T", "U", "V", "W", "X", "Y", "Z"],
   specialChar: ["`", "~", "!", "@", "#", "$", "%", "^", "&", "*", "-","_", "=", "+"],
   nums: [1, 2, 3, 4, 5, 6, 7, 8, 9, 0],
+
+  // Data will be stored into userPass based on the users response
+  userPass: [],
   
   // When the process method is called it will store the user input values into corresponding variables
   process: function() {
@@ -29,43 +32,37 @@ var criteria = {
     console.log(numsIn);
 
   // Takes the values from the user-input variables from the process method
-  // Checks each of the value to see if they are true or false
-    if (lowerCaseIn && upperCaseIn && specialCharIn && numsIn) {
+  // Checks each value to see if they are true or false
+    if (lowerCaseIn === true) {
+      this.userPass.push(this.lowerCase);
+    }
 
-    } else if (lowerCaseIn && upperCaseIn && specialCharIn && !numsIn) {
+    if (upperCaseIn === true) {
+      this.userPass.push(this.upperCase);
+    }
 
-    } else if (lowerCaseIn && upperCaseIn && !specialCharIn && numsIn) {
+    if (specialCharIn === true) {
+      this.userPass.push(this.specialChar);
+    }
 
-    } else if (lowerCaseIn && !upperCaseIn && specialCharIn && numsIn) {
+    if (numsIn === true) {
+      this.userPass.push(this.nums);
+    }
 
-    } else if (!lowerCaseIn && upperCaseIn && specialCharIn && numsIn) {
+    // if none of the criteria is true, then it will alert the user
+    if (lowerCaseIn === false && upperCaseIn === false && specialCharIn === false && numsIn === false) {
+      alert("None of the criteria was accepted, please confirm at least one or more");
+    }
 
-    } else if (!lowerCaseIn && !upperCaseIn && specialCharIn && numsIn) {
+    // Takes all of the data that was pushed to the userPass array and joins them together
+    var truePass = this.userPass.join("")
 
-    } else if (lowerCaseIn && upperCaseIn && !specialCharIn && !numsIn) {
-
-    } else if (lowerCaseIn && !upperCaseIn && specialCharIn && !numsIn) {
-
-    } else if (!lowerCaseIn && upperCaseIn && !specialCharIn && numsIn) {
-
-    } else if (lowerCaseIn && !upperCaseIn && !specialCharIn && numsIn) {
-
-    } else if (!lowerCaseIn && upperCaseIn && specialCharIn && !numsIn) {
-    
-    } else if (!lowerCaseIn && !upperCaseIn && !specialCharIn && numsIn) {
-    
-    } else if (!lowerCaseIn && !upperCaseIn && specialCharIn && !numsIn) {
-    
-    } else if (!lowerCaseIn && upperCaseIn && !specialCharIn && !numsIn) {
-    
-    } else if (lowerCaseIn && !upperCaseIn && !specialCharIn && !numsIn) {
-
-  // If none of that options are accepted, it will relay an alert prompt stating so
-    } else {
-    alert("Unable to create a password as none of the criteria was accepted");
-    return;
-    }   
+    console.log(truePass)
   }
+}
+
+function validation() {
+
 }
 
 function generatePassword() {
@@ -78,14 +75,9 @@ function generatePassword() {
   if (passLen >= criteria.minChar && passLen <= criteria.maxChar) {
     criteria.process();
   
-  // If a user clicks cancel on the pop-up it will stop the function from running
-  } else if (!passLen) {    
-    return;
-
-  // Creates an alert message if criteria hasn't been met and stops the function from running
-  } else {
-    alert("Please input a number between 8 and 20");
-    return;
+  // Creates an alert message if criteria hasn't been met and stops the function from running  
+  } else {    
+    alert("Please input a number between 8 and 20");    
   }
 
   // Ensure that at least one of the pop-ups is selected to generate a password
