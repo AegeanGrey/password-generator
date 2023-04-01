@@ -15,10 +15,12 @@ var criteria = {
   nums: [1, 2, 3, 4, 5, 6, 7, 8, 9, 0],
 
   // Data will be stored into userPass based on the users response
-  userPass: [],
+  userPass: []
+}
+
+// When the validation method is called it will store the user input values into corresponding variables
+function validation() {
   
-  // When the process method is called it will store the user input values into corresponding variables
-  process: function() {
     var lowerCaseIn = confirm("Would you like lowercase letters?");
     console.log(lowerCaseIn);
 
@@ -34,19 +36,19 @@ var criteria = {
   // Takes the values from the user-input variables from the process method
   // Checks each value to see if they are true or false
     if (lowerCaseIn === true) {
-      this.userPass.push(this.lowerCase);
+      criteria.userPass.push(criteria.lowerCase);
     }
 
     if (upperCaseIn === true) {
-      this.userPass.push(this.upperCase);
+      criteria.userPass.push(criteria.upperCase);
     }
 
     if (specialCharIn === true) {
-      this.userPass.push(this.specialChar);
+      criteria.userPass.push(criteria.specialChar);
     }
 
     if (numsIn === true) {
-      this.userPass.push(this.nums);
+      criteria.userPass.push(criteria.nums);
     }
 
     // if none of the criteria is true, then it will alert the user
@@ -55,14 +57,9 @@ var criteria = {
     }
 
     // Takes all of the data that was pushed to the userPass array and joins them together
-    var truePass = this.userPass.join("")
-
+    truePass = criteria.userPass.join("");
     console.log(truePass)
-  }
-}
-
-function validation() {
-
+    return truePass;
 }
 
 function generatePassword() {
@@ -73,23 +70,14 @@ function generatePassword() {
 
   // Compares passLen and checks if it's 8-20 characters long
   if (passLen >= criteria.minChar && passLen <= criteria.maxChar) {
-    criteria.process();
-  
+    validation();
+    console.log(truePass);
+
   // Creates an alert message if criteria hasn't been met and stops the function from running  
   } else {    
     alert("Please input a number between 8 and 20");    
   }
-
-  // Ensure that at least one of the pop-ups is selected to generate a password
-  // Prevent user from selecting no on all answers
-  
-
-} 
-
-
-
-
-
+}
 
 // Write password to the #password input
 function writePassword() {
