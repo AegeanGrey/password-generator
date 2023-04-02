@@ -57,7 +57,7 @@ function validation() {
     }
 
     // Takes all of the data that was pushed to the userPass array and joins them together
-    truePass = criteria.userPass.join("");
+    truePass = criteria.userPass.join();
     console.log(truePass)
     return truePass;
 }
@@ -71,7 +71,15 @@ function generatePassword() {
   // Compares passLen and checks if it's 8-20 characters long
   if (passLen >= criteria.minChar && passLen <= criteria.maxChar) {
     validation();
-    console.log(truePass);
+
+    if (truePass.length > criteria.userPass.length) {
+      var q = ""
+    for (let i = 0; i < passLen; i++) {
+      q += truePass.charAt(Math.floor(Math.random() * truePass.length));
+    }
+    console.log(q)
+    return q;
+  }
 
   // Creates an alert message if criteria hasn't been met and stops the function from running  
   } else {    
@@ -85,7 +93,7 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
+  
 }
 
 // Add event listener to generate button
