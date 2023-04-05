@@ -55,3 +55,5 @@ Here's how to use it:
 - Would you like numbers?
 
 The webpage will then load a new randomly generated password with the user selected inputs!
+
+If you didn't get the desired results, I'd recommend refreshing the browser before clicking the Generate Password button again as the results get muddied by pressing the button repeatedly.
