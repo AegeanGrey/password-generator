@@ -9,10 +9,10 @@ var criteria = {
   maxChar: 20,
 
   // Created arrays that contains data for their respective lists
-  lowerCase: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l","m", "n", "o", "p", "q", "r","s", "t", "u", "v", "w", "x", "y", "z"],
-  upperCase: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L","M", "N", "O", "P", "Q", "R","S", "T", "U", "V", "W", "X", "Y", "Z"],
-  specialChar: ["`", "~", "!", "@", "#", "$", "%", "^", "&", "*", "-","_", "=", "+"],
-  nums: [1, 2, 3, 4, 5, 6, 7, 8, 9, 0],
+  lowerCase: ["abcdefghijklmnopqrstuvwxyz"],
+  upperCase: ["ABCDEFGHIJKLMNOPQRSTUVWXYZ"],
+  specialChar: ["`~!@#$%^&*-_=+"],
+  nums: [1234567890],
 
   // Data will be stored into userPass based on the users response
   userPass: []
@@ -58,7 +58,8 @@ function validation() {
 
     // Takes all of the data that was pushed to the userPass array and joins them together
     truePass = criteria.userPass.join();
-    console.log(truePass)
+
+    // Returns the joined data in truePass back to the generatePassword functions
     return truePass;
 }
 
@@ -72,12 +73,23 @@ function generatePassword() {
   if (passLen >= criteria.minChar && passLen <= criteria.maxChar) {
     validation();
 
+    // If Statement that checks to see if the length of truePass is greater than userPass
     if (truePass.length > criteria.userPass.length) {
+
+    // Establishes a string for 
       var q = ""
+    
+    // For loop that will continue to repeat code until it reaches the users initial input number from passLen
     for (let i = 0; i < passLen; i++) {
+
+      // q variable continues to generate a random character from the length of the truePass array
       q += truePass.charAt(Math.floor(Math.random() * truePass.length));
+
+      // Will continue to console log each individual character into q
+      console.log(q);
     }
-    console.log(q)
+    
+    // Returns the results of the random password characters to the password variable in the writePassword function
     return q;
   }
 
